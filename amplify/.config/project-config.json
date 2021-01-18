@@ -1,0 +1,17 @@
+{
+  "projectName": "raxemail",
+  "version": "3.0",
+  "frontend": "javascript",
+  "javascript": {
+    "framework": "vue",
+    "config": {
+      "SourceDir": "src",
+      "DistributionDir": "dist",
+      "BuildCommand": "npx nuxt build",
+      "StartCommand": "npx nuxt generate"
+    }
+  },
+  "providers": [
+    "awscloudformation"
+  ]
+}

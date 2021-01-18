@@ -1,0 +1,15 @@
+{
+  "dev": {
+    "awscloudformation": {
+      "AuthRoleName": "amplify-raxemail-dev-101209-authRole",
+      "UnauthRoleArn": "arn:aws:iam::787909791073:role/amplify-raxemail-dev-101209-unauthRole",
+      "AuthRoleArn": "arn:aws:iam::787909791073:role/amplify-raxemail-dev-101209-authRole",
+      "Region": "us-west-2",
+      "DeploymentBucketName": "amplify-raxemail-dev-101209-deployment",
+      "UnauthRoleName": "amplify-raxemail-dev-101209-unauthRole",
+      "StackName": "amplify-raxemail-dev-101209",
+      "StackId": "arn:aws:cloudformation:us-west-2:787909791073:stack/amplify-raxemail-dev-101209/51e123f0-5733-11eb-9496-0abe64716de5",
+      "AmplifyAppId": "dip2thkq3by5s"
+    }
+  }
+}
