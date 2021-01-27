@@ -1,4 +1,7 @@
 {
+  "providers": [
+    "awscloudformation"
+  ],
   "projectName": "raxemail",
   "version": "3.0",
   "frontend": "javascript",
@@ -8,10 +11,7 @@
       "SourceDir": "src",
       "DistributionDir": "dist",
       "BuildCommand": "npx nuxt build",
-      "StartCommand": "npx nuxt generate"
+      "StartCommand": "npx nuxt serve"
     }
-  },
-  "providers": [
-    "awscloudformation"
-  ]
+  }
 }
