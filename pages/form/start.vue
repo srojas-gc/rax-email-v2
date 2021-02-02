@@ -83,13 +83,17 @@ export default {
         
         postName() {
             console.log("postNewName")
-            API.post('apicloudspacemail','/forms', {
+            API.post('apidocker','/form', {
                 body: {
                     name: this.name
                 }
             })
             .then(res => {
-                console.log(res);
+                
+                //Convierto el body de la respuesta en json
+                let body = JSON.parse(res.body);
+
+                this.$store.commit('form/setFormId',body.id)
                 this.$router.push('/form/rate')
             })
             .catch(err => {

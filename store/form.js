@@ -6,7 +6,8 @@ export const state = () => ({
     	accountsRaxPlus: null,
     	accountsExchange: null,
     	archiving: null
-	}
+	},
+	formId: null
 })
 
 export const mutations = {
@@ -25,6 +26,10 @@ export const mutations = {
 		state.accounts.accountsExchange = accounts.accountsExchange;
 		state.accounts.archiving = accounts.archiving;
 	},
+
+	setFormId (state, setid) {
+		state.formId = setid;
+	}
 }
 
 export const getters = {
@@ -39,5 +44,9 @@ export const getters = {
 
 	getAccounts (state) {
 		return state.accounts;
+	},
+
+	getFormId (state) {
+		return state.formId;
 	}
 }
