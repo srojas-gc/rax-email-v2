@@ -73,7 +73,7 @@
 
                         </div>
 
-                        <button @click="next()" class="text-white text-base font-semibold rounded-md shadow-md bg-indigo-500 hover:bg-indigo-600 p-3 mt-4">
+                        <button @click="postPriority()" class="text-white text-base font-semibold rounded-md shadow-md bg-indigo-500 hover:bg-indigo-600 p-3 mt-4">
                             Siguiente
                         </button>
                     </div>
@@ -87,6 +87,7 @@
 
 <script>
 import { mapGetters } from 'vuex'
+import { API } from 'aws-amplify';
 
 export default {
 
@@ -146,10 +147,7 @@ export default {
     },
 
     methods:{
-        next(){
-            this.$router.push('/form/service')
-        },
-
+      
         pickCard(cardId){
 
             this.cards[cardId].picked = !this.cards[cardId].picked;
@@ -158,6 +156,22 @@ export default {
 
         setBool(){
             setTimeout(() => this.loaderBool = true, 2000);
+        },
+
+        postPriority() {
+            API.put('apidocker','/form', {
+                body: {
+                    id: this.$store.getters['form/getFormId'],
+                    name: this.$store.getters['form/getName'],
+                    priorities: this.cards
+                }
+            })
+            .then(res => {
+                this.$router.push('/form/service')
+            })
+            .catch(err => {
+                console.log(err);
+            })
         }
     },
 

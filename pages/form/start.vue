@@ -59,30 +59,12 @@ export default {
 
 	methods: {
 
-        getForms() {
-            console.log("getForms")
-            API.get('apicloudspacemail','/forms')
-            .then(res => {
-                console.log(res)
-            }).catch(err => {
-                console.log(err)
-            })
-        },
-
         setName () {
-			try {
-				this.$store.commit('form/setName', this.name);
-				this.postName();
-			} catch (e){
-				error({
-		            statusCode: 503,
-		            message: 'Error al setear nombre'
-		        })
-			}
+			this.$store.commit('form/setName', this.name);
+			this.postName();
 		},
         
         postName() {
-            console.log("postNewName")
             API.post('apidocker','/form', {
                 body: {
                     name: this.name

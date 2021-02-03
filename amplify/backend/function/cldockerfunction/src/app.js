@@ -71,7 +71,6 @@ app.get("/form", function (req, res) {
 
 app.post("/form", function (req, res) {
   const timestamp = new Date().toISOString();
-  console.log(timestamp)
   let params = {
     TableName: tableName,
     Item: {
@@ -80,6 +79,25 @@ app.post("/form", function (req, res) {
       complete: false,
       createdAt: timestamp,
       updatedAt: timestamp,
+    }
+  }
+
+  dynamodb.put(params, (error, result) => {
+    if(error){
+      res.json({ statusCode: 500, error: error.message, url: req.url });
+    } else {
+      res.json({ statusCode: 200, url: req.url, body: JSON.stringify(params.Item) });
+    }
+  });
+});
+
+app.put("/form", function (req, res) {
+  const timestamp = new Date().toISOString();
+  let params = {
+    TableName: tableName,
+    Item: {
+      ...req.body,
+      updatedAt: timestamp
     }
   }
 
