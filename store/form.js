@@ -1,24 +1,21 @@
 export const state = () => ({
-	name: null,
-	rate: 0,
+	
 	accounts : {
 		accountsRax: null,
     	accountsRaxPlus: null,
     	accountsExchange: null,
     	archiving: null
 	},
-	formId: null
+
+	formId: null,
+	rate: 0,
+	name: null,
+	complete: false,
+	createdAt: null,
+	priorities: null,
 })
 
 export const mutations = {
-
-	setName (state, name) {
-		state.name = name;
-	},
-
-	setRate (state, rate) {
-		state.rate = rate;
-	},
 
 	setAccounts (state, accounts) {
 		state.accounts.accountsRax = accounts.accountsRax;
@@ -29,7 +26,27 @@ export const mutations = {
 
 	setFormId (state, setid) {
 		state.formId = setid;
-	}
+	},
+
+	setRate (state, rate) {
+		state.rate = rate;
+	},
+
+	setName (state, name) {
+		state.name = name;
+	},
+
+	setComplete (state, complete) {
+		state.complete = complete;
+	},
+
+	setCreatedAt (state, createdAt) {
+		state.createdAt = createdAt;
+	},
+
+	setPriorities (state, priorities) {
+		state.priorities = priorities;
+	},
 }
 
 export const getters = {

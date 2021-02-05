@@ -91,7 +91,7 @@ app.post("/form", function (req, res) {
   });
 });
 
-app.put("/form", function (req, res) {
+app.update("/form", function (req, res) {
   const timestamp = new Date().toISOString();
   let params = {
     TableName: tableName,
@@ -101,7 +101,7 @@ app.put("/form", function (req, res) {
     }
   }
 
-  dynamodb.put(params, (error, result) => {
+  dynamodb.update(params, (error, result) => {
     if(error){
       res.json({ statusCode: 500, error: error.message, url: req.url });
     } else {

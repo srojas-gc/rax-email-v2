@@ -76,6 +76,7 @@ export default {
                 let body = JSON.parse(res.body);
 
                 this.$store.commit('form/setFormId',body.id)
+                
                 this.$router.push('/form/rate')
             })
             .catch(err => {
