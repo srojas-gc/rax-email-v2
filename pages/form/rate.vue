@@ -59,7 +59,18 @@ export default {
     methods: {
     	async getRate(){
     		try {
-				await this.$store.commit('form/setRate', this.myValue);
+                
+				this.$store.commit('form/setRate', this.myValue);
+                API.put('apidocker','/form', {
+                    body: {
+                        id: this.$store.getters['form/getFormId'],
+                        name: this.$store.getters['form/getName'],
+                        complete: this.$store.getters['form/getComplete'],
+                        rate: this.myValue,
+                        createdAt: this.$store.getters['form/getCreatedAt']
+                    }
+                })
+
 				this.$router.push('/form/action')
 			} catch (e){
 				error({

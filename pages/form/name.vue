@@ -16,7 +16,7 @@
                                 <ValidationProvider name="names" rules="required" v-slot="{ errors }">
                                     <div class="w-full text-center"> 
                                         <div class="max-w-sm mx-auto p-1 pr-0 flex items-center">
-                                            <input v-model="name" v-on:keyup.enter="handleSubmit(setName)" type="text" placeholder="Ricardo Perez"
+                                            <input v-model="fullname" v-on:keyup.enter="handleSubmit(setName)" type="text" placeholder="Ricardo Perez"
                                                 class="flex-1 appearance-none rounded shadow p-3 text-grey-dark mr-2 focus:outline-none">
                                             <button type="submit" form="myform" class="text-white text-base font-semibold rounded-md shadow-md bg-indigo-500 hover:bg-indigo-600 p-3">
                                                 Siguiente
@@ -51,7 +51,7 @@ export default {
 
 	data() {
         return {
-        	name: null
+        	fullname: null
         }
     },
 
@@ -63,7 +63,26 @@ export default {
 
 	methods: {
 		async setName () {
-			this.$router.push('/form/phone')
+			
+            this.$store.commit('form/setFullName', this.fullname);
+
+            API.put('apidocker','/form', {
+                body: {
+                    id: this.$store.getters['form/getFormId'],
+                    name: this.$store.getters['form/getName'],
+                    complete: this.$store.getters['form/getComplete'],
+                    rate: this.$store.getters['form/getRate'],
+                    createdAt: this.$store.getters['form/getCreatedAt'],
+                    priorities: this.cards
+                }
+            })
+            .then(res => {
+                //this.$router.push('/form/service')
+                this.$router.push('/form/phone')
+            })
+            .catch(err => {
+                console.log(err);
+            })
 		}
 	}
 }

@@ -51,19 +51,31 @@ export const mutations = {
 
 export const getters = {
 
-	getName (state) {
-		return state.name;
+	getFormId (state) {
+		return state.formId;
 	},
 
 	getRate (state) {
 		return state.rate;
 	},
 
+	getName (state) {
+		return state.name;
+	},
+
+	getComplete (state) {
+		return state.complete;
+	},
+
+	getCreatedAt (state) {
+		return state.createdAt;
+	},
+
 	getAccounts (state) {
 		return state.accounts;
 	},
 
-	getFormId (state) {
-		return state.formId;
-	}
+	getPriorities (state) {
+		return state.priorities;
+	},	
 }

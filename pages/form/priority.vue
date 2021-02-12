@@ -159,10 +159,15 @@ export default {
         },
 
         postPriority() {
+
+            this.$store.commit('form/setRate', this.myValue);
             API.put('apidocker','/form', {
                 body: {
                     id: this.$store.getters['form/getFormId'],
                     name: this.$store.getters['form/getName'],
+                    complete: this.$store.getters['form/getComplete'],
+                    rate: this.$store.getters['form/getRate'],
+                    createdAt: this.$store.getters['form/getCreatedAt'],
                     priorities: this.cards
                 }
             })
