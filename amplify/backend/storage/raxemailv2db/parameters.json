@@ -1,0 +1,5 @@
+{
+    "tableName": "raxemailv2landingtable",
+    "partitionKeyName": "id",
+    "partitionKeyType": "S"
+}

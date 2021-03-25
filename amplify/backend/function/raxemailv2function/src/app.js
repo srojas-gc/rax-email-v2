@@ -12,13 +12,12 @@ const AWS = require('aws-sdk')
 var awsServerlessExpressMiddleware = require('aws-serverless-express/middleware')
 var bodyParser = require('body-parser')
 var express = require('express')
-const { v4: uuidv4 } = require('uuid')
 
 AWS.config.update({ region: process.env.TABLE_REGION });
 
 const dynamodb = new AWS.DynamoDB.DocumentClient();
 
-let tableName = "forms";
+let tableName = "raxemailv2landingtable";
 if(process.env.ENV && process.env.ENV !== "NONE") {
   tableName = tableName + '-' + process.env.ENV;
 }
@@ -26,10 +25,10 @@ if(process.env.ENV && process.env.ENV !== "NONE") {
 const userIdPresent = false; // TODO: update in case is required to use that definition
 const partitionKeyName = "id";
 const partitionKeyType = "S";
-const sortKeyName = "name";
-const sortKeyType = "S";
+const sortKeyName = "";
+const sortKeyType = "";
 const hasSortKey = sortKeyName !== "";
-const path = "/form";
+const path = "/path";
 const UNAUTH = 'UNAUTH';
 const hashKeyPath = '/:' + partitionKeyName;
 const sortKeyPath = hasSortKey ? '/:' + sortKeyName : '';
@@ -54,61 +53,6 @@ const convertUrlType = (param, type) => {
       return param;
   }
 }
-
-app.get("/form", function (req, res) {
-  let params = {
-    TableName: tableName,
-    limit: 100
-  }
-  dynamodb.scan(params, (error, result) => {
-    if(error){
-      res.json({ statusCode: 500, error: error.message });
-    } else {
-      res.json({ statusCode: 200, url: req.url, body: JSON.stringify(result.Items) });
-    }
-  });
-})
-
-app.post("/form", function (req, res) {
-  const timestamp = new Date().toISOString();
-  let params = {
-    TableName: tableName,
-    Item: {
-      ...req.body,
-      id: uuidv4(),
-      complete: false,
-      createdAt: timestamp,
-      updatedAt: timestamp,
-    }
-  }
-
-  dynamodb.put(params, (error, result) => {
-    if(error){
-      res.json({ statusCode: 500, error: error.message, url: req.url });
-    } else {
-      res.json({ statusCode: 200, url: req.url, body: JSON.stringify(params.Item) });
-    }
-  });
-});
-
-app.update("/form", function (req, res) {
-  const timestamp = new Date().toISOString();
-  let params = {
-    TableName: tableName,
-    Item: {
-      ...req.body,
-      updatedAt: timestamp
-    }
-  }
-
-  dynamodb.update(params, (error, result) => {
-    if(error){
-      res.json({ statusCode: 500, error: error.message, url: req.url });
-    } else {
-      res.json({ statusCode: 200, url: req.url, body: JSON.stringify(params.Item) });
-    }
-  });
-});
 
 /********************************
  * HTTP Get method for list objects *

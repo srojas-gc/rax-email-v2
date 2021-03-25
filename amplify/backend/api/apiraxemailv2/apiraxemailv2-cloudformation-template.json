@@ -14,15 +14,15 @@
         },
     
     
-          "functioncldockerfunctionName": {
+          "functionraxemailv2functionName": {
             "Type": "String",
-            "Default": "functioncldockerfunctionName"
+            "Default": "functionraxemailv2functionName"
           },
         
           
-          "functioncldockerfunctionArn": {
+          "functionraxemailv2functionArn": {
             "Type": "String",
-            "Default": "functioncldockerfunctionArn"
+            "Default": "functionraxemailv2functionArn"
           }
         
           
@@ -45,16 +45,16 @@
         
         
         
-      "apidocker": {
+      "apiraxemailv2": {
         "Type": "AWS::ApiGateway::RestApi",
         "Properties": {
           "Description": "",
-          "Name": "apidocker",
+          "Name": "apiraxemailv2",
           "Body": {
             "swagger": "2.0",
             "info": {
               "version": "2018-05-24T17:52:00Z",
-              "title": "apidocker"
+              "title": "apiraxemailv2"
             },
             "host": {
                 "Fn::Join": [
@@ -90,7 +90,7 @@
             ],
             "paths": {
               
-              "/form": {
+              "/path": {
                 "options": {
                   "consumes": [
                     "application/json"
@@ -176,7 +176,7 @@
                             
                             {
                                 
-                                "Ref": "functioncldockerfunctionArn"
+                                "Ref": "functionraxemailv2functionArn"
                             },
                             
                             "/invocations"
@@ -189,7 +189,7 @@
                   }
                 }
               },
-              "/form/{proxy+}": {
+              "/path/{proxy+}": {
                 "options": {
                   "consumes": [
                     "application/json"
@@ -275,7 +275,7 @@
                           
                           {
                             
-                            "Ref": "functioncldockerfunctionArn"
+                            "Ref": "functionraxemailv2functionArn"
                           },
                           
                           "/invocations"
@@ -332,12 +332,12 @@
                   
         
         
-        "functioncldockerfunctionPermissionapidocker": {
+        "functionraxemailv2functionPermissionapiraxemailv2": {
             "Type": "AWS::Lambda::Permission",
             "Properties": {
                 "FunctionName": 
                     {
-                        "Ref":  "functioncldockerfunctionName"
+                        "Ref":  "functionraxemailv2functionName"
                     },
                     
                     "Action": "lambda:InvokeFunction",
@@ -356,7 +356,7 @@
                             },
                             ":",
                             {
-                                "Ref": "apidocker"
+                                "Ref": "apiraxemailv2"
                             },
                             "/*/*/*"
                         ]
@@ -367,7 +367,7 @@
         
         
         
-      "DeploymentAPIGWapidocker": {
+      "DeploymentAPIGWapiraxemailv2": {
         "Type": "AWS::ApiGateway::Deployment",
         "Properties": {
           "Description": "The Development stage deployment of your API.",
@@ -381,7 +381,7 @@
             ]
           },
           "RestApiId": {
-            "Ref": "apidocker"
+            "Ref": "apiraxemailv2"
           }
         }
       }
@@ -389,15 +389,15 @@
     "Outputs": {
         "RootUrl": {
             "Description": "Root URL of the API gateway",
-            "Value": {"Fn::Join": ["", ["https://", {"Ref": "apidocker"}, ".execute-api.", {"Ref": "AWS::Region"}, ".amazonaws.com/", {"Fn::If": ["ShouldNotCreateEnvResources","Prod", {"Ref": "env"} ]}]]}
+            "Value": {"Fn::Join": ["", ["https://", {"Ref": "apiraxemailv2"}, ".execute-api.", {"Ref": "AWS::Region"}, ".amazonaws.com/", {"Fn::If": ["ShouldNotCreateEnvResources","Prod", {"Ref": "env"} ]}]]}
         },
         "ApiName": {
           "Description": "API Friendly name",
-          "Value": "apidocker"
+          "Value": "apiraxemailv2"
         },
         "ApiId": {
           "Description": "API ID (prefix of API URL)",
-          "Value": {"Ref": "apidocker"}
+          "Value": {"Ref": "apiraxemailv2"}
         }
     }
   }

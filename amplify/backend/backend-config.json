@@ -1,25 +1,19 @@
 {
-  "hosting": {
-    "S3AndCloudFront": {
-      "service": "S3AndCloudFront",
-      "providerPlugin": "awscloudformation"
-    }
-  },
   "storage": {
-    "cldynamodb": {
+    "raxemailv2db": {
       "service": "DynamoDB",
       "providerPlugin": "awscloudformation"
     }
   },
   "function": {
-    "cldockerfunction": {
+    "raxemailv2function": {
       "build": true,
       "providerPlugin": "awscloudformation",
       "service": "Lambda",
       "dependsOn": [
         {
           "category": "storage",
-          "resourceName": "cldynamodb",
+          "resourceName": "raxemailv2db",
           "attributes": [
             "Name",
             "Arn"
@@ -33,13 +27,13 @@
     }
   },
   "api": {
-    "apidocker": {
+    "apiraxemailv2": {
       "service": "API Gateway",
       "providerPlugin": "awscloudformation",
       "dependsOn": [
         {
           "category": "function",
-          "resourceName": "cldockerfunction",
+          "resourceName": "raxemailv2function",
           "attributes": [
             "Name",
             "Arn"

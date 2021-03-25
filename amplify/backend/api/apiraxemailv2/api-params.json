@@ -1,0 +1,35 @@
+{
+    "paths": [
+        {
+            "name": "/path",
+            "lambdaFunction": "raxemailv2function",
+            "privacy": {
+                "open": true
+            },
+            "policyResourceName": "/path"
+        }
+    ],
+    "resourceName": "apiraxemailv2",
+    "apiName": "apiraxemailv2",
+    "functionArns": [
+        {
+            "lambdaFunction": "raxemailv2function"
+        }
+    ],
+    "privacy": {
+        "auth": 0,
+        "unauth": 0,
+        "authRoleName": "amplify-test2-dev-172351-authRole",
+        "unAuthRoleName": "amplify-test2-dev-172351-unauthRole"
+    },
+    "dependsOn": [
+        {
+            "category": "function",
+            "resourceName": "raxemailv2function",
+            "attributes": [
+                "Name",
+                "Arn"
+            ]
+        }
+    ]
+}

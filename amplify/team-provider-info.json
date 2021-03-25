@@ -1,15 +1,15 @@
 {
   "dev": {
     "awscloudformation": {
-      "AuthRoleName": "amplify-raxemail-dev-101209-authRole",
-      "UnauthRoleArn": "arn:aws:iam::787909791073:role/amplify-raxemail-dev-101209-unauthRole",
-      "AuthRoleArn": "arn:aws:iam::787909791073:role/amplify-raxemail-dev-101209-authRole",
+      "AuthRoleName": "amplify-test2-dev-172351-authRole",
+      "UnauthRoleArn": "arn:aws:iam::787909791073:role/amplify-test2-dev-172351-unauthRole",
+      "AuthRoleArn": "arn:aws:iam::787909791073:role/amplify-test2-dev-172351-authRole",
       "Region": "us-west-2",
-      "DeploymentBucketName": "amplify-raxemail-dev-101209-deployment",
-      "UnauthRoleName": "amplify-raxemail-dev-101209-unauthRole",
-      "StackName": "amplify-raxemail-dev-101209",
-      "StackId": "arn:aws:cloudformation:us-west-2:787909791073:stack/amplify-raxemail-dev-101209/51e123f0-5733-11eb-9496-0abe64716de5",
-      "AmplifyAppId": "dip2thkq3by5s"
+      "DeploymentBucketName": "amplify-test2-dev-172351-deployment",
+      "UnauthRoleName": "amplify-test2-dev-172351-unauthRole",
+      "StackName": "amplify-test2-dev-172351",
+      "StackId": "arn:aws:cloudformation:us-west-2:787909791073:stack/amplify-test2-dev-172351/5cd83d30-85cc-11eb-bb35-0212b1ad1dcd",
+      "AmplifyAppId": "d6pd06p8s57ff"
     }
   }
 }
